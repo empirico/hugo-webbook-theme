@@ -1,0 +1,191 @@
+html,
+body {
+    font-family: Lato, Helvetica, sans-serif;
+    font-family--webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    background-color: var(--surface);
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    outline: none;
+}
+
+
+
+
+.ab-w {
+    background-color: var(--surface2);
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: var(--apbh);
+    box-shadow: 0px .25rem .6rem rgba(0, 0, 0, .05);
+    border-bottom-width: .07rem;
+    border-bottom-color: var(--faint);
+    z-index: 1;
+}
+
+.ab-i {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-left: 1rem;
+}
+.a-ui{
+    padding: 0 1rem;
+}
+
+.ab-h {
+    margin: 0px .5rem;
+    border-radius: 1rem;
+}
+
+.ab-b {
+    color: var(--primarycolor);
+    line-height: 1.5rem;
+    display: inline-block;
+}
+
+.ab-j {
+    flex-direction: row;
+    display: flex;
+}
+
+.ab-db {
+    padding: 0 1rem;
+    display: flex;
+    max-width: 70vw;
+    overflow: hidden;
+}
+
+.ab-dd {
+    position: relative;
+    margin-right: .75rem;
+    display: flex;
+}
+
+.ab-dw {
+    top: 2rem;
+    display: none;
+    position: absolute;
+    background-color: var(--surface);
+    width: 100%;
+    z-index: 1;
+}
+
+.ab-dw a {
+    padding: .75rem 1rem;
+    color: var(--textmain);
+}
+
+.ab-dd:hover .ab-dw {
+    display: block;
+}
+
+.ab-md {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transp);
+}
+
+.ab-mc {
+    overflow: auto;
+    max-height: 80%;
+    background-color: var(--surface);
+    margin: auto;
+    padding: 20px;
+    border-radius: 1rem;
+    width: 80%;
+    animation-duration: 0.4s;
+    animation-name: dfe;
+}
+
+.ab-r {
+    max-width: 90rem;
+    display: flex;
+    flex: 1;
+}
+
+@keyframes dfe {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.a-cl {
+    color: var(--textmain);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.gsc-control-cse {
+    border-color: transparent !important;
+    background-color: transparent !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .ab-b{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .ab-l {
+        justify-content: start;
+    }
+
+    .ab-h {
+        margin: 0px 8px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .ab-i {
+        display: none;
+    }
+
+    .ab-l {
+        width: 180px;
+    }
+
+    .ab-dd {
+        margin: 0;
+    }
+
+    .ab-j {
+        width: auto;
+    }
+
+    .ab-h {
+        min-width: 0;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .ab-i {
+        display: none;
+    }
+
+    .ab-j {
+        position: absolute;
+        top: var(--apbh);
+        margin: .14rem;
+        height: 2.5rem;
+        background-color: #00000022;
+        border-radius: .5rem;
+        transition: 0.3s;
+        padding: 0 .5rem;
+    }
+
+}

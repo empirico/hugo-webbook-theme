@@ -1,0 +1,8 @@
+hw_library:
+  other: Biblioteca
+hw_read:
+  other: Leer más
+hw_recent:
+  other: Actualizado recientemente
+hw_copyright:
+  other: Hecho con Hugo Webbook

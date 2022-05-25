@@ -1,0 +1,8 @@
+hw_library:
+  other: Library
+hw_read:
+  other: Read more
+hw_recent:
+  other: Recently updated
+hw_copyright:
+  other: Made with Hugo Webbook

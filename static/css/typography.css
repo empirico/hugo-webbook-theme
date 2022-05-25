@@ -1,0 +1,57 @@
+h1, h2, h3 { margin-top: 1.2rem; margin-bottom: .9rem; }
+
+h4, h5, h6 { margin-top: .8rem; margin-bottom: .7rem; }
+
+blockquote { border: 0 solid #000; }
+
+h1 { font-size: 3.5rem; }
+
+h2 { font-size: 2.6rem; }
+
+h3 { font-size: 2rem; }
+
+h4 { font-size: 1.5rem; }
+
+h5 { font-size: 1rem; }
+
+h6 { font-size: .9rem; }
+
+p { font-size: 1rem; margin: .5rem 0; }
+
+p > code { background-color: #ddd; padding: .1rem .2rem; color: #faa; }
+
+code, th, li, td { font-size: 1rem; }
+
+.text2 { font-size: .8rem; margin: .2rem; color: var(--discrete); font-weight: 500; }
+
+hr { height: .05rem; margin: 1.25rem .2rem; border-width: 0; background-color: var(--faint); }
+
+img { width: 100%; }
+
+ul, ol { margin-left: 1rem; }
+
+a { text-decoration: none; list-style-type: none; color: var(--primarycolor); }
+
+blockquote { margin: 1rem 0; padding-left: 1rem; border-left-width: 4px; border-left-color: var(--faint); }
+
+blockquote > blockquote { margin: .2rem 0; }
+
+blockquote > p { padding: .25rem 0; }
+
+li { margin: .55rem 0; margin-left: 1rem; }
+
+li > p { padding: 0; }
+
+pre { border-radius: .2rem; background-color: #404145; border-radius: .2rem; padding: .5rem 1rem; margin: .5rem 0; }
+
+code { font-weight: 400; color: #FAFAFA; line-height: 1.4rem; font-family: Inconsolata, Consolas, Courier, "Courier New", "Liberation Mono", monospace; font-size: 0.9em; white-space: pre-wrap; }
+
+/*table { width: 100%; margin-bottom: 1.75em; border-spacing: 0; border-collapse: collapse; }*/
+
+tr:nth-child(even) { background: var(--surface2); }
+
+/*td, th { padding: 8px; text-align: left; border: 1px solid #ccc; }*/
+
+th { padding-bottom: 4px; }
+
+td { border-top: none; }

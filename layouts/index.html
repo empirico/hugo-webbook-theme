@@ -1,2 +1,53 @@
 {{ define "main" }}
+<div class="l-r" id="main">
+    <div class="l-wrp">
+        <div class="frow l-top">
+            <h2 class="p8 f1">
+                {{.Site.Params.Title}}
+            </h2>
+            <p class="p8 f1 l-h">
+                {{.Site.Params.Description}}
+            </p>
+        </div>
+        <h3 class="m8">
+            {{ i18n "hw_library" }}
+        </h3>
+        <div class="l-tal">
+            {{ range .Site.Sections.ByTitle }}
+            <div class="l-bks">
+                <div class="l-ig"></div>
+                <div class="p16">
+                    <h4>{{.Title}}</h4>
+                    <p>{{.Summary}}</p>
+                    <a class="l-btn pnt" href="{{.Permalink}}">{{ i18n "hw_read" }}</a>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        <h3 class="m8">
+            {{ i18n "hw_recent" }}
+        </h3>
+        <div class="l-pst">
+            {{ range ( where (where $.Site.Pages "IsNode" "==" false) "Type" "!=" "page") | first 4 }}
+            <a class="p-w sdw1 hover pnt" href="{{ .Permalink }}">
+                <h4 class="w1l">
+                    {{ .Title }}
+                </h4>
+                <p class="text2 w3l">
+                    {{ .Summary }}...
+                </p>
+                <p class="text2 w1l">
+                    {{ .Lastmod.Format "02-01-2006" }}
+                </p>
+            </a>
+            {{end}}
+        </div>
+        <footer>
+            <p class="text2">© 2022 - Empirico</p>
+            <p class="text2">{{ i18n "hw_copyright" }}</p>
+            <ul class="icons">
+            </ul>
+        </footer>
+    </div>
+</div>
 {{ end }}
