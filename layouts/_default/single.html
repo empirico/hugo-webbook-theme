@@ -1,2 +1,55 @@
 {{ define "main" }}
+<div class="s-r">
+    <div class="s-m sdw">
+        <div class="s-n">
+            <div class="s-t">
+                <a class="s-bt hover" href="/{{.Section}}">
+                    <div>
+                        <img src="/icons/toc_2.svg" alt="table of contents" class="iconrg" />
+                    </div>
+                    <p>{{i18n "hw_toc"}}</p>
+                </a>
+                <a class="s-bt hover" href="/">
+                    <div >
+                        <img src="/icons/back.svg" alt="back" class="iconrg" />
+                    </div>
+                    <p>{{i18n "hw_back"}}</p>
+                </a>
+                <hr />
+                <div class="s-s">
+                    {{ $data := newScratch }}
+                    {{ $data.Set "paths" slice}}
+                    {{range  (where $.Site.Pages "Section" "==" .Section) }}
+                        {{if and .File .File.Path}}
+                        {{$data.Set "paths" ($data.Get "paths" | append . )}}
+                        {{end}}
+                    {{end}}
+                    {{ $paths :=  sort ($data.Get "paths")  "File.Path"}} 
+                    {{ partial "filesystem.html" (dict "paths" $paths "level" 1 "url" ( .Page.Permalink)) }}
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="s-wrp">
+        <div class="s-mn">
+            <div class="p8">
+                {{.Content}}
+                {{- partial "footer.html" . -}}
+            </div>
+        </div>
+        <div class="s-toc p8">
+            <div class="s-tuc">
+                <a class="s-tc" href="/">
+                    <p>Goback</p>
+                </a>
+                <div style="height: 1rem;"> </div>
+                {{ range $num := (seq 15) }}
+                <a class="s-tc pl{{.}}" href="/">
+                    <p class="w1l">Text goes here asd a djas dg asjkdbas g dhagdj</p>
+                </a>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</div>
 {{end}}

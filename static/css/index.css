@@ -26,6 +26,7 @@
 	width: 25rem;
 	padding: .5rem;
 	white-space: normal;
+	border-radius: .5rem;
 	display: inline-block;
 }
 .l-tal{
@@ -41,7 +42,7 @@
 	overflow: hidden;
 	border-radius: 1rem;
 	background-color: var(--surface);
-	border: 1px solid var(--faint);
+	border: .07rem solid var(--faint);
 }
 .l-ig{
 	background-image: url("https://picsum.photos/200");

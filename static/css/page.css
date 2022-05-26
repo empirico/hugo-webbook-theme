@@ -1,0 +1,131 @@
+.s-r{
+	height: 100vh;
+	width: 100vw;
+}
+.s-wrp{
+	height: calc(100vh - var(--apbh));
+	overflow: auto;
+	margin-top: var(--apbh);
+	margin-left: max(12rem,(50vw - 22rem));
+	display: flex;
+	flex-direction: row;
+	overflow: 	auto	;
+}
+.s-m{
+	width: max(12rem,(50vw - 22rem));
+	align-items: flex-end;
+    background-color: var(--surface3);
+    border-right: .07rem solid var(--faint);
+    position: absolute;
+    top: var(--apbh);
+	bottom: 0;
+    left: 0;
+    text-align: right;
+}
+.s-t > hr, .s-toc > hr{
+	margin: 0 .2rem;
+}
+.s-n{
+	width: 12rem;
+	display: inline-block;
+	height: 100%;
+}
+.s-t{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+.s-s{
+	flex: 1;
+	overflow: auto;
+}
+.s-bt > p{
+	text-align: left;
+	margin: 0;
+	font-size: .7rem;
+	flex: 1;
+	opacity: .8;
+}
+.s-bt >div:hover{
+	opacity: .2;
+}
+.s-bt >div{
+	display: flex;
+	padding-right: .3rem;
+}
+.s-bt{
+	padding: .5rem .6rem;
+	align-items: center;
+	display: flex;
+	color: var(--textmain);
+	flex-direction: row;
+	border-style: solid;
+	border-color: var(--faint);
+	border-width: 0;
+}
+.s-toc{
+    width: max(13rem,(50vw - 21rem));
+	position: 	sticky;
+	height: 	100%;
+	overflow: 	auto	;
+	top: 0;
+}
+.s-tuc{
+	width: 	13rem;
+	height: 	100%;
+}
+.s-tc > p{
+	margin: 0;
+	font-size: .7rem;
+	opacity: .7;
+
+}
+.s-tc{
+	color: var(--textmain);
+	display: block;
+	padding: .3rem 1rem;
+	border-left: 	.1rem solid var(--faint);
+}
+.s-tc:hover{
+	color: var(--primarycolor);
+}
+.s-mn{
+	margin: 1.5rem;
+	flex: 1;
+}
+.s-cur{
+	background-color: var(--surface);
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-color: #bbc;
+}
+.pl1{
+	padding-left: 1rem;
+}
+.pl2{
+	padding-left: 1.5rem;
+}
+.pl3{
+	padding-left: 2rem;
+}
+.pl4{
+	padding-left: 2.5rem;
+}
+.pl5{
+	padding-left: 3rem;
+}
+.pl6, .pl7, .pl8, .pl9, .pl10,{
+	padding-left: 3.5rem;
+}
+
+.mgn1{border-left-width: .25rem;}
+.mgn2{border-left-width: .5rem;}
+.mgn3{border-left-width: .75rem;}
+.mgn4{border-left-width: 1rem;}
+.mgn5{border-left-width: 1.25rem;}
+.mgn6{border-left-width: 1.5rem;}
+.mgn7{border-left-width: 1.75rem;}
+.mgn8{border-left-width: 2rem;}
+.fold-container{
+	overflow: hidden;}

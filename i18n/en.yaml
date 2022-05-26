@@ -6,3 +6,7 @@ hw_recent:
   other: Recently updated
 hw_copyright:
   other: Made with Hugo Webbook
+hw_toc:
+  other: Open Table of Contents
+hw_back:
+  other: Go back one page

@@ -1,0 +1,17 @@
+{{$offset := (sub .level 1)}}
+{{$firstop := (index (.children) 0)}}
+{{if (.children) }}
+            <a class="mgn{{$offset}} s-bt s-fd hover pnt{{if and ($firstop.Params.hideNav) (eq .url  $firstop.Permalink)}} s-cur{{end}}" href="{{$firstop.Permalink}}" name="fold-but">
+            <p>
+                {{if $firstop.Params.hideNav}}
+                {{$firstop.Title}}
+                {{else}}
+            {{.ftitle}}
+            {{end}}
+        </p>
+            <div name="fold-icon" ><img src="/icons/fold.svg" alt="table of contents" class="iconrg" /></div>
+        </a>
+            <div class="fold-container" name="fold-cont">
+            {{ partial "filesystem.html" (dict "paths" .children "level" .level "url" .url)  }}        
+            </div>
+{{end}}

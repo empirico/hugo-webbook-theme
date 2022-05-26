@@ -6,3 +6,7 @@ hw_recent:
   other: Actualizado recientemente
 hw_copyright:
   other: Hecho con Hugo Webbook
+hw_toc:
+  other: Abrir indice
+hw_back:
+  other: Ir a pagina anterior

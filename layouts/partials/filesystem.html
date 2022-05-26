@@ -1,0 +1,33 @@
+{{ $data := newScratch }}
+{{$nlevel := (add .level 1)}}
+{{$offset := (sub .level 1)}}
+{{$url := .url}}
+{{range .paths }}
+{{ if .IsPage }}
+    {{ $slugs := split (replace .File.Path (printf "%s\\" .Section) "") "\\" }}
+    {{ if in (index ($slugs) $offset) ".md" }}
+        {{if ($data.Get "sublist") }}
+            {{$data.Get "ftitle"}}
+            {{ partial "foldable.html" (dict "children" ($data.Get "sublist") "level" $nlevel "ftitle" ($data.Get "ftitle") "url" $url ) }}        
+            {{ $data.Delete "sublist" }}
+        {{end}}
+        {{if not .Params.hideNav}}
+        <a class="mgn{{$offset}} s-bt hover{{if eq $url  .Permalink}} s-cur{{end}}" href="{{.Permalink}}">
+            <p>{{.Title}}</p>
+        </a>
+        {{end}}
+    {{else}}
+        {{$data.Set "ftitle" (index ($slugs) $offset)}}
+        {{if and ($data.Get "sublist")}}
+            {{$data.Set "sublist" ( ($data.Get "sublist") | append . )}}
+        {{else}}
+            {{$data.Set "sublist" (slice . ) }}
+        {{end}}
+
+    {{end}}
+{{ end }}
+{{end }}
+    {{if ($data.Get "sublist") }}
+    {{ partial "foldable.html" (dict "children" ($data.Get "sublist") "level" $nlevel "ftitle" ($data.Get "ftitle") "url" $url )  }}        
+            {{ $data.Delete "sublist" }}
+    {{end}}
