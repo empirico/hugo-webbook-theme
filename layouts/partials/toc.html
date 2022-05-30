@@ -1,0 +1,22 @@
+{{/* thanks to https://gist.github.com/skyzyx/a796d66f6a124f057f3374eff0b3f99a */}}
+{{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}
+{{- $has_headers := ge (len $headers) 1 -}}
+{{- if $has_headers -}}
+  {{- range $i, $header := $headers -}}
+    {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+    {{- $headerLevel := len (seq $headerLevel) -}}
+    {{ $id := index (findRE "(id=\"(.*?)\")" $header 9) 0 }}
+    {{ $cleanedID := replace (replace $id "id=\"" "") "\"" "" }}
+    {{- $header := replaceRE "<h[1-6].*?>((.|\n])+?)</h[1-6]>" "$1" $header -}}
+    {{ $anchors := findRE "<a[^>]*>([^<]+)</a>" $header }}
+      {{if gt (len $anchors) 0 }}
+        <div id="tco-{{$i}}" class="s-tc pnt hover pl{{$headerLevel }}" onclick="location.href='#{{- $cleanedID  -}}'">
+           {{ $header | safeHTML }}
+        </div>
+      {{else}}
+        <a id="tco-{{$i}}" class="s-tc hover pl{{$headerLevel }}" href="#{{- $cleanedID  -}}">
+          {{ $header | safeHTML }}
+        </a>
+      {{end}}
+  {{- end -}}
+{{- end -}}

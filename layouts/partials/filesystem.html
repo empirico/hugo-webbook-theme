@@ -6,6 +6,9 @@
 {{ if .IsPage }}
     {{ $slugs := split (replace .File.Path (printf "%s\\" .Section) "") "\\" }}
     {{ if in (index ($slugs) $offset) ".md" }}
+    {{with .Params.header}}
+        <p class="mgn{{$offset}} s-bt s-hd">{{.}}</p>
+    {{end}}
         {{if ($data.Get "sublist") }}
             {{$data.Get "ftitle"}}
             {{ partial "foldable.html" (dict "children" ($data.Get "sublist") "level" $nlevel "ftitle" ($data.Get "ftitle") "url" $url ) }}        

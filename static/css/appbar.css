@@ -10,11 +10,8 @@ body {
     outline: none;
 }
 
-
-
-
 .ab-w {
-    background-color: var(--surface2);
+    background-color: var(--surface);
     justify-content: center;
     width: 100%;
     position: absolute;
@@ -44,6 +41,8 @@ body {
     color: var(--primarycolor);
     line-height: 1.5rem;
     display: inline-block;
+    font-size: .8rem;
+    font-weight: bold;
 }
 
 .ab-j {

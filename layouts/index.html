@@ -42,7 +42,8 @@
             </a>
             {{end}}
         </div>
-        {{- partial "footer.html" . -}}
+        
+        {{- partialCached "footer.html" . -}}
     </div>
 </div>
 {{ end }}

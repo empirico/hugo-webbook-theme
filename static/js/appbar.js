@@ -16,7 +16,7 @@ function initializeappbar(e) {
             s.parentNode.insertBefore(gcse, s);
         }
     }
-    byId("clsis").onclick =  function() {
+    byId("clsis").onclick = modal.onclick= function() {
         modal.style.display = "none";
     }
 }

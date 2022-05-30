@@ -6,7 +6,7 @@
                 {{end}}
 
                 <span class="bold w2l a-ui">
-                    {{.Site.Title}}
+                    {{$.Site.Title}}
                 </span>
             
         </a>
@@ -19,21 +19,21 @@
     </div>
     <div class="ab-j alc" id="abtn">
         <img src="/icons/search.svg" alt="search" class="iconbg pnt fade" id="myBtn" />
-        <div class="ab-dd">
             {{ if .Site.IsMultiLingual }}
+        <div class="ab-dd">
             <div class="ab-db alc pnt fade">
                 <img src="/icons/lang.svg" alt="Language selector" class="iconbg" />
                 <p class="ph8">{{ .Site.Params.languagename }}</p>
                 <img src="/icons/fold.svg" alt="arrow" class="iconbg" />
             </div>
             <div class="ab-dw sdw">
-                {{ range $.Translations }}
+                {{ range $.Site.Home.AllTranslations }}
                 <a href="{{ .Permalink }}" class="frow hover">
                     <img src="/icons/radio.svg" alt="arrow" class="iconrg mr8" />{{ .Site.Params.languagename }}</a>
                 {{ end }}
             </div>
-            {{ end }}
         </div>
+            {{ end }}
     </div>
     <div id="myModal" class="ab-md">
         <div class="ab-mc">

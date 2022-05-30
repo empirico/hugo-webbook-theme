@@ -22,7 +22,7 @@ p > code { background-color: #ddd; padding: .1rem .2rem; color: #faa; }
 
 code, th, li, td { font-size: 1rem; }
 
-.text2 { font-size: .8rem; margin: .2rem; color: var(--discrete); font-weight: 500; }
+.text2 { font-size: .8rem; margin: .2rem; color: var(--textsec); font-weight: 500; }
 
 hr { height: .05rem; margin: 1.25rem .2rem; border-width: 0; background-color: var(--faint); }
 
@@ -55,3 +55,17 @@ tr:nth-child(even) { background: var(--surface2); }
 th { padding-bottom: 4px; }
 
 td { border-top: none; }
+
+@media only screen and (max-width: 540px) {
+h1 { font-size: 2rem; }
+
+h2 { font-size: 1.8rem; }
+
+h3 { font-size: 1.6rem; }
+
+h4 { font-size: 1.3rem; }
+
+h5 { font-size: 1rem; }
+
+h6 { font-size: .8rem; }
+}

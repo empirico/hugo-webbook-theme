@@ -1,54 +1,102 @@
 {{ define "main" }}
 <div class="s-r">
-    <div class="s-m sdw">
-        <div class="s-n">
-            <div class="s-t">
+{{/* to avoid long build times we only execute our paginator once and reuse it over and over */}}
+{{$scratch := (partialCached "paginator.html" . )}}
+{{$sectionorder := (index ($scratch.Get "menu") .Section)}}
+{{$elements := (index ($scratch.Get "dict") .Section)}}
+{{$ns:= newScratch }}
+{{range $elements}}
+    {{if and ($ns.Get "found") (not ($ns.Get "foundnxt"))}}
+        {{$ns.Set "next" .}}
+        {{$ns.Set "foundnxt" true}}
+    {{end}}
+    {{if eq $.Permalink .Permalink}}
+        {{$ns.Set "found" true}}
+    {{end}}
+    {{if not ($ns.Get "found")}}
+        {{$ns.Set "prev" .}}
+    {{end}}
+
+{{end}}
+<div id="snackbar" class="sdw hover" >Some text some message..</div>
+    <div class="s-m sdw" id="sidebar">
+                <div class="hidetoc pnt sdws hover tfx" onclick="hidenav()">
+                    <img src="/icons/url.svg" alt="table of contents" class="iconrg" />
+                </div>
+        <div class="s-n" id="sidebar2">
+            <div class="s-t" >
                 <a class="s-bt hover" href="/{{.Section}}">
                     <div>
                         <img src="/icons/toc_2.svg" alt="table of contents" class="iconrg" />
                     </div>
                     <p>{{i18n "hw_toc"}}</p>
                 </a>
-                <a class="s-bt hover" href="/">
+                {{with ($ns.Get "prev")}}
+                <a class="s-bt hover" href="{{.Permalink}}">
                     <div >
                         <img src="/icons/back.svg" alt="back" class="iconrg" />
                     </div>
                     <p>{{i18n "hw_back"}}</p>
                 </a>
+                {{end}}
                 <hr />
-                <div class="s-s">
-                    {{ $data := newScratch }}
-                    {{ $data.Set "paths" slice}}
-                    {{range  (where $.Site.Pages "Section" "==" .Section) }}
-                        {{if and .File .File.Path}}
-                        {{$data.Set "paths" ($data.Get "paths" | append . )}}
-                        {{end}}
-                    {{end}}
-                    {{ $paths :=  sort ($data.Get "paths")  "File.Path"}} 
-                    {{ partial "filesystem.html" (dict "paths" $paths "level" 1 "url" ( .Page.Permalink)) }}
-                </div> 
+                <div class="s-s" id="navs"> 
+                    {{$sectionorder}}
+                <div style="height: 3rem"></div>
+                </div>  
             </div>
         </div>
     </div>
-    <div class="s-wrp">
+    <div class="s-abr"></div>
+    <div class="s-wrp" id="main">
         <div class="s-mn">
-            <div class="p8">
+            <div id="cnt">
+                {{.Title}}
                 {{.Content}}
-                {{- partial "footer.html" . -}}
+                <div class="s-fnv">
+                    {{with ($ns.Get "prev")}}
+                    <a href="{{.Permalink}}" class="sdw hover">
+                        <p>Previous</p>
+                        {{.Title}}
+                        <img src="/icons/back.svg" alt="back" class="iconrg" />
+                    </a>
+                    {{end}}
+                    {{with ($ns.Get "next")}}
+                    <a href="{{.Permalink}}" class="s-rg sdw hover">
+                        <p>Next</p>
+                        {{.Title}}
+                        <img src="/icons/next.svg" alt="back" class="iconrg" />
+                    </a>
+                    {{end}}
+                </div>
+                {{- partialCached "footer.html" . -}}
             </div>
         </div>
-        <div class="s-toc p8">
+        <div class="s-toc" id="toc1">
+                <div class="hidetoc pnt sdws hover" onclick="hidetoc()">
+                    <img src="/icons/url.svg" alt="table of contents" class="iconrg" />
+                </div>
+                <div class="s-tec">
             <div class="s-tuc">
-                <a class="s-tc" href="/">
-                    <p>Goback</p>
+                <a class="s-bt s-tc hover" href="javascript:copylink()">
+                    <div>
+                        <img src="/icons/url.svg" alt="table of contents" class="iconrg" />
+                    </div>
+                    <p>Copy link</p>
+                </a>
+                <a class="s-bt s-tc hover" href="/{{.Section}}">
+                    <div>
+                        <img src="/icons/pdf.svg" alt="table of contents" class="iconrg" />
+                    </div>
+                    <p>Export as PDF</p>
                 </a>
                 <div style="height: 1rem;"> </div>
-                {{ range $num := (seq 15) }}
-                <a class="s-tc pl{{.}}" href="/">
-                    <p class="w1l">Text goes here asd a djas dg asjkdbas g dhagdj</p>
-                </a>
-                {{end}}
+                <div id="toc" class="toc-wrp">
+                {{- partial "toc.html" . -}}
+                <div style="height: 3rem"></div>
+                </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

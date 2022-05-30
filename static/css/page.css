@@ -1,36 +1,64 @@
+:root{
+	--sidewidth : max(12rem,(50vw - 24rem));
+	--sidewidth2 : max(14rem,(50vw - 24rem));
+	--innerwidth: 12rem;
+	--innerwidth2: 14rem;
+}
 .s-r{
 	height: 100vh;
 	width: 100vw;
+	display: flex;
+	flex-direction: column;
+}
+.s-abr{
+	height: var(--apbh);
+	width: 100%;
 }
 .s-wrp{
 	height: calc(100vh - var(--apbh));
 	overflow: auto;
-	margin-top: var(--apbh);
-	margin-left: max(12rem,(50vw - 22rem));
+	margin-left: var(--sidewidth2);
 	display: flex;
 	flex-direction: row;
 	overflow: 	auto	;
 }
 .s-m{
-	width: max(12rem,(50vw - 22rem));
+	width: var(--sidewidth2);
 	align-items: flex-end;
-    background-color: var(--surface3);
-    border-right: .07rem solid var(--faint);
-    position: absolute;
-    top: var(--apbh);
+	background-color: var(--surface3);
+	border-right: .07rem solid var(--faint);
+	position: absolute;
+	top: var(--apbh);
 	bottom: 0;
-    left: 0;
-    text-align: right;
+	left: 0;
+	transition: .7s ease;
+	text-align: right;
+}
+.s-mwr{
+	width: 0!important;
+}
+.s-mwr2{
+	width: 0!important;
+}
+.reflow{
+	pointer-events: none;
+	opacity: 0;
+}
+.navmrg{
+	margin: 0;
 }
 .s-t > hr, .s-toc > hr{
 	margin: 0 .2rem;
 }
 .s-n{
-	width: 12rem;
+	transition: .3s ease;
+	width: var(--innerwidth2);
+	padding-left: 1rem;
 	display: inline-block;
 	height: 100%;
 }
 .s-t{
+	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -39,13 +67,14 @@
 .s-s{
 	flex: 1;
 	overflow: auto;
+	text-align: left;
 }
 .s-bt > p{
-	text-align: left;
 	margin: 0;
 	font-size: .7rem;
 	flex: 1;
 	opacity: .8;
+	text-align: left;
 }
 .s-bt >div:hover{
 	opacity: .2;
@@ -58,47 +87,79 @@
 	padding: .5rem .6rem;
 	align-items: center;
 	display: flex;
-	color: var(--textmain);
+	color: inherit;
 	flex-direction: row;
 	border-style: solid;
 	border-color: var(--faint);
 	border-width: 0;
 }
 .s-toc{
-    width: max(13rem,(50vw - 21rem));
+	width: var(--sidewidth);
 	position: 	sticky;
 	height: 	100%;
-	overflow: 	auto	;
+	transition: .7s ease;
 	top: 0;
 }
+.s-tec{
+	overflow: 	auto	;
+	padding: .5rem 0;
+	height: 100%;
+}
+.t-cur{
+	color: var(--primarycolor) !important;
+	border-color: var(--primarycolor)!important;
+	background-color: var(--hover);
+}
 .s-tuc{
-	width: 	13rem;
+	width: 	var(--innerwidth);
 	height: 	100%;
 }
-.s-tc > p{
-	margin: 0;
-	font-size: .7rem;
-	opacity: .7;
-
-}
-.s-tc{
+.toc-wrp > a, .toc-wrp > div > a{
 	color: var(--textmain);
-	display: block;
-	padding: .3rem 1rem;
-	border-left: 	.1rem solid var(--faint);
 }
-.s-tc:hover{
+.toc-wrp > a:hover, .toc-wrp > div > a:hover{
 	color: var(--primarycolor);
 }
+
+.toc-wrp > a{
+	width: 100%;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+    overflow: hidden;
+}
+.toc-wrp > div{
+	display: flex;
+	align-items: center;
+}
+.s-tc{
+	font-size: .7rem;
+	border-left: 	.1rem solid var(--faint);
+	padding: .3rem 1rem;
+	margin: 0;
+	opacity: .7;
+}
+.toc-wrp{
+	display: block;
+}
+
 .s-mn{
-	margin: 1.5rem;
+	margin: 2rem 2.5rem;
+	overflow-wrap: break-word;
 	flex: 1;
 }
 .s-cur{
 	background-color: var(--surface);
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-color: #bbc;
+	border: .02rem solid var(--faint);
+}
+.s-hd{
+	font-size: .68rem;
+	letter-spacing: .04rem;
+	font-weight: bold;
+	color: var(--textsec); 
+	text-transform: uppercase;
+	margin: 0;
+	padding-bottom: .2rem;
 }
 .pl1{
 	padding-left: 1rem;
@@ -115,17 +176,163 @@
 .pl5{
 	padding-left: 3rem;
 }
-.pl6, .pl7, .pl8, .pl9, .pl10,{
+.pl6 {
 	padding-left: 3.5rem;
 }
 
-.mgn1{border-left-width: .25rem;}
-.mgn2{border-left-width: .5rem;}
-.mgn3{border-left-width: .75rem;}
-.mgn4{border-left-width: 1rem;}
-.mgn5{border-left-width: 1.25rem;}
-.mgn6{border-left-width: 1.5rem;}
-.mgn7{border-left-width: 1.75rem;}
-.mgn8{border-left-width: 2rem;}
+.s-fnv{
+	display: flex;
+	flex-direction: row;
+	height: 4.5rem;
+}
+.s-fnv > a{
+	display: block;
+	flex: 1;
+	max-width: 60%;
+	position: relative;
+	background-color: var(--surface2);
+	border-radius: 1rem;
+	margin: .5rem;
+	padding: .5rem 1rem;
+	font-size: 1rem;
+	color: var(--textmain);
+	text-align: right;
+}
+.s-fnv > a > p{
+	font-size: .8rem;
+	opacity: .8;
+	margin: 0;
+	margin-bottom: .5rem;
+}
+.s-fnv > a > img{
+	position: absolute;
+	left: 0;
+	opacity: .5;
+	top: 0;
+	margin: .5rem;
+}
+
+.s-rg{
+	text-align: left !important;
+}
+.s-rg > img{
+	right: 0;
+	left: unset !important;
+
+}
+
 .fold-container{
+	border-left: .1rem solid var(--faint);
+	margin-left: .5rem;
+	color: var(--textsec);
 	overflow: hidden;}
+
+#snackbar {
+  visibility: hidden;
+  background-color: var(--surface);
+  color: var(--textmain);
+  text-align: center;
+  border-radius: 1rem;
+  padding: .5rem 1rem;
+  position: fixed;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+#snackbar.show {
+  visibility: visible; 
+}
+.hidetoc{
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: var(--surface);
+  position: absolute;
+  left: -1.5rem;
+  margin: auto;
+  top: 0;
+  z-index: 1;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+.tfx{
+	left: unset;
+	right: -1.5rem;
+}
+
+@media only screen and (max-width: 1250px) {
+.s-toc{
+	width: 0;
+}
+.s-mwr{
+	width: var(--sidewidth)!important;
+}
+.s-fnv{
+		flex-direction: column;
+		height: auto;
+	}
+	.s-fnv>a{
+		max-width: 100%;
+	}
+}
+
+@media only screen and (max-width: 750px) {
+
+.s-mwr2{
+	width: var(--sidewidth)!important;
+}
+.s-m{
+	width: 0;
+	z-index: 1;
+}
+.s-n{
+pointer-events: none;
+	opacity: 0;
+}
+.s-wrp{
+margin: 0;
+}
+.reflow{
+	width: var(--innerwidth)!important;
+	opacity: 1;
+	pointer-events: auto;
+}
+.navmrg{
+	margin-left: 0
+}
+.s-toc{
+		position: absolute;
+    z-index: 2;
+    right: 0;
+     top: var(--apbh); 
+     bottom: 0; 
+     height: calc(100% - var(--apbh));
+    background-color: var(--surface);
+	}
+.tfx{
+	top: 3rem!important;
+}
+}
+@media only screen and (max-width: 540px) {
+	:root{
+		--sidewidth:calc(100% - 3rem);
+		--innerwidth:  calc(100% - 3rem);
+	}
+	.navmrg{
+		margin-left: 0;
+	}
+	
+	.reflow{
+		width: 100%!important;
+	}
+	.s-n{
+width: auto;
+}
+	.s-mn{
+		overflow-wrap: anywhere;
+		width: 100vw;
+	margin: 2rem 1.5rem;}
+}

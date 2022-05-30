@@ -1,0 +1,56 @@
+{{$temp:= newScratch }}
+{{ range .Site.Sections }}
+    {{$temp.Set "t" slice}}
+    {{$temp.Set "m" ""}}
+    {{$st := .Section}}
+    {{range  (where $.Site.Pages "Section" "==" $st) }}
+        {{if and .File .File.Path}}
+        {{/* we are collecting in a database all the subpages of the section*/}}
+        {{$temp.Set "t" ( $temp.Get "t" | append . )}}
+        {{end}}
+    {{end}}
+    {{$temp.Set "t" ( sort (where (where ($temp.Get "t") "IsNode" "==" false) "Type" "!=" "page") "File.Path" ) }} 
+    {{ $.Scratch.SetInMap "dict" $st ($temp.Get "t") }}
+    {{ $data := newScratch }}
+    {{ $data.Set "prev" 1 }}
+    {{ $data.Set "st" $st }}
+    {{range ($temp.Get "t")}}
+        {{ $slugs := split (replace .File.Path (printf "%s\\" ($data.Get "st")) "") "\\" }}
+        {{ $current := len $slugs }}
+        {{ $data.Set "ttl" .Title}}
+        {{ $data.Set "url" .Permalink}}
+        {{ $data.Set "hdn" .Params.hideNav}}
+        {{ range seq (math.Max (sub ($data.Get "prev") $current) 0 ) }}
+            {{$temp.Set "m" ( print ($temp.Get "m") "</div>")}}
+        {{end}}
+        {{ range seq (math.Max (sub $current ($data.Get "prev")) 0) }}
+            {{$temp.Set "m" ( print ($temp.Get "m") "<a class='s-bt s-fd hover pnt' href='")}}
+            {{$temp.Set "m" ( print ($temp.Get "m") ($data.Get "url"))}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "' name='fold-but'><p>")}}
+            {{if $data.Get "hdn"}}
+            {{$temp.Set "m" ( print ($temp.Get "m") ($data.Get "ttl"))}}
+            {{else}}
+            {{$temp.Set "m" ( print ($temp.Get "m") (index $slugs (sub $current 2)))}}
+            {{end}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "</p><div name='fold-icon'><img src='/icons/unfold.svg' alt='table of contents' class='iconrg' /></div></a><div class='fold-container' name='fold-cont'>")}}
+        {{end}}
+        {{with .Params.header}}
+
+            {{$temp.Set "m" ( print ($temp.Get "m") "<p class='s-bt s-hd'>")}}
+            {{$temp.Set "m" ( print ($temp.Get "m") . )}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "</p>")}}
+        {{end}}
+        {{if not .Params.hideNav}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "<a class='s-bt hover' href='" )}}
+            {{$temp.Set "m" ( print ($temp.Get "m") ($data.Get "url"))}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "'><p>")}}
+            {{$temp.Set "m" ( print ($temp.Get "m") ($data.Get "ttl"))}}
+            {{$temp.Set "m" ( print ($temp.Get "m") "</p></a>")}}
+        {{end}}
+        {{ $data.Set "prev" $current }}
+    {{end}}
+    {{$temp.Set "m" ( print ($temp.Get "m") "</div>")}}
+    {{ $.Scratch.SetInMap "menu" $st (($temp.Get "m" ) | safeHTML) }}
+{{ end }}
+{{return $.Scratch}}
+

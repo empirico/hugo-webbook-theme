@@ -1,11 +1,11 @@
 :root {
-    --textmain: #222;
+    --textmain: #444;
+    --textsec: #666;
     --transp: rgba(0, 0, 0, .3);
-    --surface: #fafafa;
+    --surface: #fff;
     --surface2: #f5f5f5;
     --surface3: #f9f9f9;
     --faint: #ddd;
-    --discrete: #666;
     --hover: #eee;
     --sides: calc(calc(100vw - 910px) / 2);
     --apbh: 3rem;
@@ -89,6 +89,9 @@
 .sdw {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+.sdws {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
 .icon {
     height: 100%;
@@ -96,18 +99,18 @@
 }
 
 .iconsm {
-    width: 16px;
-    height: 16px;
+    width: .8rem;
+    height: .8rem;
 }
 
 .iconrg{
-    width: 20px;
-    height: 20px;
+    width: 1rem;
+    height: 1rem;
 }
 
 .iconbg {
-    width: 24px;
-    height: 24px;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 .hover:hover{
     background-color: var(--hover);
@@ -128,23 +131,23 @@
 
 @media only screen and (max-width: 1900px) {
     html {
-        font-size: 18px;
+        font-size: 23px;
     }
 }
 @media only screen and (max-width: 750px) {
     html {
-        font-size: 17px;
+        font-size: 24px;
     }
 }
 
 @media only screen and (max-width: 540px) {
     html {
-        font-size: 16px;
+        font-size: 22px;
     }
 }
 
 @media only screen and (max-width: 350px) {
     html {
-        font-size: 14px;
+        font-size: 18px;
     }
 }
